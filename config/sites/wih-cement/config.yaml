@@ -1,0 +1,112 @@
+base: 'https://wihcement.com/'
+baseVariants: []
+errorHandling:
+  - errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=404'
+  - errorCode: 403
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=404'
+languages:
+  - title: English
+    enabled: true
+    languageId: 0
+    base: /
+    locale: en_US.UTF-8
+    iso-639-1: en
+    navigationTitle: English
+    hreflang: en-us
+    direction: ltr
+    flag: gb
+    typo3Language: default
+  - title: French
+    enabled: true
+    languageId: 1
+    base: /fr/
+    locale: fr_FR.UTF-8
+    iso-639-1: fr
+    navigationTitle: Français
+    hreflang: fr-fr
+    direction: ltr
+    flag: fr
+    typo3Language: fr
+    fallbackType: fallback
+    fallbacks: '0'
+  - title: Kinyarwanda
+    enabled: true
+    languageId: 2
+    base: /rw/
+    locale: rw_RW.UTF-8
+    iso-639-1: rw
+    navigationTitle: Kinyarwanda
+    hreflang: rw-rw
+    direction: ltr
+    flag: rw
+    typo3Language: default
+    fallbackType: fallback
+    fallbacks: '0'
+  - title: Chinese
+    enabled: true
+    languageId: 3
+    base: /zh/
+    locale: zh_CN.UTF-8
+    iso-639-1: zh
+    navigationTitle: 中文
+    hreflang: zh-cn
+    direction: ltr
+    flag: cn
+    typo3Language: default
+    fallbackType: fallback
+    fallbacks: '0'
+rootPageId: 1
+routes:
+  - route: robots.txt
+    type: staticText
+    content: "User-agent: *\nAllow: /\nSitemap: https://wihcement.com/sitemap.xml"
+routeEnhancers:
+  ProductDetail:
+    type: Extbase
+    extension: WihCement
+    plugin: ProductList
+    routes:
+      - routePath: '/{product_name}'
+        _controller: 'Product::show'
+        _arguments:
+          product_name: product
+    defaultController: 'Product::list'
+    aspects:
+      product_name:
+        type: PersistedAliasMapper
+        tableName: tx_wihcement_domain_model_product
+        routeFieldName: slug
+  ProjectDetail:
+    type: Extbase
+    extension: WihCement
+    plugin: ProjectList
+    routes:
+      - routePath: '/{project_slug}'
+        _controller: 'Project::show'
+        _arguments:
+          project_slug: project
+    defaultController: 'Project::list'
+    aspects:
+      project_slug:
+        type: PersistedAliasMapper
+        tableName: tx_wihcement_domain_model_project
+        routeFieldName: slug
+  NewsDetail:
+    type: Extbase
+    extension: WihCement
+    plugin: NewsList
+    routes:
+      - routePath: '/{news_slug}'
+        _controller: 'News::show'
+        _arguments:
+          news_slug: news
+    defaultController: 'News::list'
+    aspects:
+      news_slug:
+        type: PersistedAliasMapper
+        tableName: tx_wihcement_domain_model_news
+        routeFieldName: slug
+websiteTitle: 'WIH Cement'

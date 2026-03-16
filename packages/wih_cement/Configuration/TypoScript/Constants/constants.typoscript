@@ -1,0 +1,42 @@
+# WIH Cement TypoScript Constants
+
+plugin.tx_wihcement {
+    view {
+        templateRootPath = EXT:wih_cement/Resources/Private/Templates/
+        partialRootPath = EXT:wih_cement/Resources/Private/Partials/
+        layoutRootPath = EXT:wih_cement/Resources/Private/Layouts/
+    }
+    persistence {
+        # Storage PIDs — update these after creating sysfolder pages in backend
+        storagePid = 100
+        productStoragePid = 101
+        projectStoragePid = 102
+        newsStoragePid = 103
+        jobStoragePid = 104
+        testimonialStoragePid = 105
+        dealerStoragePid = 106
+        inquiryStoragePid = 107
+    }
+    settings {
+        # Page UIDs — update after creating pages
+        contactPageUid = 10
+        productsPageUid = 3
+        projectsPageUid = 6
+        newsPageUid = 8
+        careersPageUid = 9
+        dealerPortalPageUid = 11
+        # Email settings
+        adminEmail = admin@wihcement.com
+        salesEmail = sales@wihcement.com
+        hrEmail = hr@wihcement.com
+        # Google Maps
+        googleMapsApiKey =
+        # reCAPTCHA
+        recaptchaSiteKey =
+        recaptchaSecretKey =
+        # WhatsApp
+        whatsappNumber = +250000000000
+        # Pagination
+        itemsPerPage = 12
+    }
+}
