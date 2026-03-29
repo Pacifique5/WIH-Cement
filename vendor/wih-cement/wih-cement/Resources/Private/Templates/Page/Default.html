@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Title">{page.title} — WIH Cement</f:section>
+
+<f:section name="Main">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><f:link.page pageUid="1">Home</f:link.page></li>
+                    <li class="breadcrumb-item active" aria-current="page">{page.title}</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">{page.title}</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-content section-padding">
+        <div class="container">
+            <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 0}" />
+        </div>
+    </div>
+
+</f:section>

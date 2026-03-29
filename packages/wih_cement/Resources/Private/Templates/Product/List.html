@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="products-grid">
+    <div class="products-filter" role="search" aria-label="Filter products">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="opc">OPC</button>
+        <button class="filter-btn" data-filter="ppc">PPC</button>
+        <button class="filter-btn" data-filter="rhc">Rapid Hardening</button>
+        <button class="filter-btn" data-filter="specialized">Specialized</button>
+    </div>
+
+    <div class="products-list row" role="list">
+        <f:for each="{products}" as="product">
+            <div class="col-md-6 col-lg-3 product-card-wrap" data-category="{product.category}" role="listitem">
+                <article class="product-card">
+                    <f:if condition="{product.image}">
+                        <div class="product-image">
+                            <f:image image="{product.image.0}" width="400" height="300" crop="true"
+                                     alt="{product.name}" class="img-fluid" />
+                        </div>
+                    </f:if>
+                    <div class="product-body">
+                        <span class="product-category badge">{product.category}</span>
+                        <h3 class="product-name">{product.name}</h3>
+                        <p class="product-teaser">{product.shortDescription}</p>
+                        <div class="product-actions">
+                            <f:link.action action="show" arguments="{product: product}"
+                                           class="btn btn-primary btn-sm">
+                                View Details
+                            </f:link.action>
+                            <f:link.action action="inquiry" arguments="{product: product}"
+                                           class="btn btn-outline btn-sm">
+                                Inquire
+                            </f:link.action>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </f:for>
+    </div>
+</div>

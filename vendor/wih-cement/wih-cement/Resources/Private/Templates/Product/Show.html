@@ -1,0 +1,92 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<article class="product-detail" itemscope itemtype="https://schema.org/Product">
+
+    <div class="product-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <f:if condition="{product.image}">
+                        <f:image image="{product.image.0}" width="600" height="450"
+                                 alt="{product.name}" class="img-fluid product-main-image"
+                                 itemprop="image" />
+                    </f:if>
+                </div>
+                <div class="col-md-6">
+                    <span class="product-category badge badge-primary">{product.category}</span>
+                    <h1 class="product-title" itemprop="name">{product.name}</h1>
+                    <div class="product-description" itemprop="description">
+                        <f:format.html>{product.description}</f:format.html>
+                    </div>
+                    <div class="product-cta">
+                        <f:link.action action="inquiry" arguments="{product: product}"
+                                       class="btn btn-primary btn-lg">
+                            Request Inquiry
+                        </f:link.action>
+                        <f:if condition="{product.datasheet}">
+                            <f:link.typolink parameter="{product.datasheet.0.publicUrl}"
+                                             class="btn btn-outline btn-lg"
+                                             target="_blank"
+                                             additionalAttributes="{rel: 'noopener noreferrer'}">
+                                Download Datasheet (PDF)
+                            </f:link.typolink>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs: Specs / Applications / Performance / Packaging / Safety -->
+    <div class="product-tabs section-padding">
+        <div class="container">
+            <div class="tabs" role="tablist" aria-label="Product information">
+                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-specs" id="btn-specs">
+                    Technical Specifications
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-applications" id="btn-applications">
+                    Applications
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-performance" id="btn-performance">
+                    Performance Data
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-packaging" id="btn-packaging">
+                    Packaging
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-safety" id="btn-safety">
+                    Safety
+                </button>
+            </div>
+
+            <div id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" class="tab-panel active">
+                <f:format.html>{product.technicalSpecs}</f:format.html>
+            </div>
+            <div id="tab-applications" role="tabpanel" aria-labelledby="btn-applications" class="tab-panel" hidden="hidden">
+                <f:format.html>{product.applications}</f:format.html>
+            </div>
+            <div id="tab-performance" role="tabpanel" aria-labelledby="btn-performance" class="tab-panel" hidden="hidden">
+                <f:format.html>{product.performanceData}</f:format.html>
+            </div>
+            <div id="tab-packaging" role="tabpanel" aria-labelledby="btn-packaging" class="tab-panel" hidden="hidden">
+                <f:format.html>{product.packagingDetails}</f:format.html>
+            </div>
+            <div id="tab-safety" role="tabpanel" aria-labelledby="btn-safety" class="tab-panel" hidden="hidden">
+                <f:format.html>{product.safetyInformation}</f:format.html>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Form -->
+    <div class="product-inquiry section-padding bg-light" id="inquiry">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2>Product Inquiry</h2>
+                    <f:render partial="Forms/ProductInquiry" arguments="{product: product}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</article>

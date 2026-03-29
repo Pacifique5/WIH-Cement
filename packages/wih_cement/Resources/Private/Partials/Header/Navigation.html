@@ -1,0 +1,64 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<header class="site-header" role="banner">
+    <div class="container">
+        <div class="header-inner">
+
+            <!-- Logo -->
+            <a href="/" class="site-logo" aria-label="WIH Cement Home">
+                <img src="EXT:wih_cement/Resources/Public/Images/logo.svg"
+                     alt="WIH Cement"
+                     width="180" height="60" />
+            </a>
+
+            <!-- Main Navigation -->
+            <nav class="main-nav" aria-label="Main navigation">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul id="main-menu" class="nav-list" role="menubar">
+                    <f:for each="{mainMenu}" as="item">
+                        <li class="nav-item {f:if(condition: item.active, then: 'active')} {f:if(condition: item.children, then: 'has-dropdown')}"
+                            role="none">
+                            <a href="{item.link}"
+                               class="nav-link"
+                               role="menuitem"
+                               {f:if(condition: item.children, then: 'aria-haspopup="true" aria-expanded="false"')}>
+                                {item.title}
+                            </a>
+                            <f:if condition="{item.children}">
+                                <ul class="dropdown-menu" role="menu" aria-label="{item.title} submenu">
+                                    <f:for each="{item.children}" as="child">
+                                        <li role="none">
+                                            <a href="{child.link}"
+                                               class="dropdown-link {f:if(condition: child.active, then: 'active')}"
+                                               role="menuitem">
+                                                {child.title}
+                                            </a>
+                                        </li>
+                                    </f:for>
+                                </ul>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ul>
+            </nav>
+
+            <!-- Language Switcher -->
+            <div class="language-switcher" aria-label="Language selection">
+                <f:for each="{languageMenu}" as="lang">
+                    <a href="{lang.link}"
+                       class="lang-link {f:if(condition: lang.active, then: 'active')}"
+                       hreflang="{lang.hreflang}"
+                       lang="{lang.twoLetterIsoCode}"
+                       aria-label="Switch to {lang.navigationTitle}"
+                       {f:if(condition: lang.active, then: 'aria-current="true"')}>
+                        {lang.navigationTitle}
+                    </a>
+                </f:for>
+            </div>
+
+        </div>
+    </div>
+</header>

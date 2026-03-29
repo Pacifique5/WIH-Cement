@@ -83,6 +83,9 @@ return [
         'recycler' => [
             'packagePath' => 'typo3/sysext/recycler/',
         ],
+        'wih_cement' => [
+            'packagePath' => 'packages/wih_cement/',
+        ],
         'theme_camino' => [
             'packagePath' => 'typo3/sysext/theme_camino/',
         ],

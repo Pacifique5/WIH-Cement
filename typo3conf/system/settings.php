@@ -1,7 +1,7 @@
 <?php
 return [
     'BE' => [
-        'debug' => false,
+        'debug' => true,
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$M3d1N3lYbENVdkdrR3VUVQ$2RHbWn6i9R9NxTbO0D3sIfjXsGiTzKqIcMdGoxWpWdc',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
@@ -39,6 +39,10 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+        'redirects' => [
+            'showCheckIntegrityInfoInReports' => '1',
+            'showCheckIntegrityInfoInReportsSeconds' => '86400',
+        ],
     ],
     'FE' => [
         'cacheHash' => [
@@ -69,7 +73,7 @@ return [
     'MAIL' => [
         'transport' => 'smtp',
         'transport_sendmail_command' => '',
-        'transport_smtp_encrypt' => '',
+        'transport_smtp_encrypt' => false,
         'transport_smtp_password' => '',
         'transport_smtp_server' => 'localhost:25',
         'transport_smtp_username' => '',
@@ -95,10 +99,10 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '',
-        'displayErrors' => 0,
+        'devIPmask' => '*',
+        'displayErrors' => 1,
         'encryptionKey' => '5fbd0cf6dd1b87ea745323a74e3baca6ccac15113019427a022c00082cd48110663073131d0590e6a45cf5a8526199e2',
-        'exceptionalErrors' => 4096,
+        'exceptionalErrors' => 12290,
         'features' => [
             'frontend.cache.autoTagging' => true,
             'security.system.enforceAllowedFileExtensions' => true,

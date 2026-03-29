@@ -1,0 +1,113 @@
+# WIH Cement TypoScript Setup
+
+page = PAGE
+page {
+    typeNum = 0
+    meta {
+        viewport = width=device-width, initial-scale=1
+        X-UA-Compatible = IE=edge
+        theme-color = #FF6600
+    }
+    includeCSS {
+        bootstrap = EXT:wih_cement/Resources/Public/Css/bootstrap.min.css
+        main = EXT:wih_cement/Resources/Public/Css/main.css
+    }
+    includeJSFooter {
+        bootstrap = EXT:wih_cement/Resources/Public/JavaScript/bootstrap.bundle.min.js
+        main = EXT:wih_cement/Resources/Public/JavaScript/main.js
+    }
+    10 = FLUIDTEMPLATE
+    10 {
+        templateName = TEXT
+        templateName.stdWrap.cObject = CASE
+        templateName.stdWrap.cObject {
+            key.data = levelfield:-1, backend_layout_next_level, slide
+            key.override.field = backend_layout
+            default = TEXT
+            default.value = Default
+            pagets__home = TEXT
+            pagets__home.value = Home
+            pagets__about = TEXT
+            pagets__about.value = About
+            pagets__products = TEXT
+            pagets__products.value = Products
+            pagets__product_detail = TEXT
+            pagets__product_detail.value = ProductDetail
+            pagets__news = TEXT
+            pagets__news.value = News
+            pagets__careers = TEXT
+            pagets__careers.value = Careers
+            pagets__contact = TEXT
+            pagets__contact.value = Contact
+            pagets__dealer_portal = TEXT
+            pagets__dealer_portal.value = DealerPortal
+        }
+        templateRootPaths {
+            0 = EXT:wih_cement/Resources/Private/Templates/Page/
+        }
+        partialRootPaths {
+            0 = EXT:wih_cement/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            0 = EXT:wih_cement/Resources/Private/Layouts/
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
+                levels = 2
+                includeSpacer = 1
+                as = mainMenu
+                expandAll = 1
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                special = directory
+                special.value = 3
+                levels = 1
+                as = productsMenu
+            }
+            30 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            30 {
+                as = languageMenu
+            }
+        }
+    }
+}
+
+# Fluid Styled Content
+tt_content.stdWrap.innerWrap >
+
+# SEO
+config {
+    pageTitleFirst = 1
+    pageTitleSeparator = |
+    pageTitleSeparator.noTrimWrap = | | |
+    absRefPrefix = auto
+    no_cache = 0
+    sendCacheHeaders = 1
+    linkVars = L
+    sys_language_uid.data = GP:L
+    language = default
+    locale_all = en_US.UTF-8
+    htmlTag_langKey = en
+}
+
+# Sitemap XML
+[request.getNormalizedParams().getRequestUri() == '/sitemap.xml']
+    page.typeNum = 0
+[end]
+
+# JSON API for dealer map
+dealerMapApi = PAGE
+dealerMapApi {
+    typeNum = 1001
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders.10.header = Content-type: application/json
+        no_cache = 1
+    }
+    10 = USER
+    10 {
+        userFunc = WihCement\WihCement\Controller\DealerController->mapApiAction
+    }
+}

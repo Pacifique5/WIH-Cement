@@ -1,0 +1,118 @@
+# WIH Cement — Page TSconfig
+
+# Backend Layouts
+mod.web_layout.BackendLayouts {
+    home {
+        title = Home Page
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 10
+                rows {
+                    1.columns.1 { name = Hero Banner; colPos = 0 }
+                    2.columns.1 { name = About Section; colPos = 1 }
+                    3.columns.1 { name = Product Highlights; colPos = 2 }
+                    4.columns.1 { name = Key Strengths; colPos = 3 }
+                    5.columns.1 { name = Certifications; colPos = 4 }
+                    6.columns.1 { name = Ongoing Projects; colPos = 5 }
+                    7.columns.1 { name = Testimonials; colPos = 6 }
+                    8.columns.1 { name = Latest News; colPos = 7 }
+                    9.columns.1 { name = Contact CTA; colPos = 8 }
+                    10.columns.1 { name = FAQ; colPos = 9 }
+                }
+            }
+        }
+    }
+    default {
+        title = Default (Content Page)
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 1
+                rows.1.columns.1 { name = Main Content; colPos = 0 }
+            }
+        }
+    }
+    two_column {
+        title = Two Column
+        config {
+            backend_layout {
+                colCount = 2
+                rowCount = 1
+                rows.1 {
+                    columns {
+                        1 { name = Main Content; colPos = 0; colspan = 1 }
+                        2 { name = Sidebar; colPos = 10; colspan = 1 }
+                    }
+                }
+            }
+        }
+    }
+}
+
+# Restrict content elements per page type
+TCEFORM.tt_content.CType {
+    keepItems = textmedia,text,image,bullets,table,html,shortcut,list,header,uploads
+}
+
+# New Content Element Wizard — WIH Cement group
+mod.wizards.newContentElement.wizardItems.wih_cement {
+    header = WIH Cement Elements
+    elements {
+        wih_product_list {
+            iconIdentifier = content-plugin
+            title = Product List
+            description = Display product listing or detail
+            tt_content_defValues {
+                CType = list
+                list_type = wihcement_productlist
+            }
+        }
+        wih_project_list {
+            iconIdentifier = content-plugin
+            title = Projects & Case Studies
+            description = Display project listing
+            tt_content_defValues {
+                CType = list
+                list_type = wihcement_projectlist
+            }
+        }
+        wih_news_list {
+            iconIdentifier = content-plugin
+            title = News & Media
+            description = Display news listing
+            tt_content_defValues {
+                CType = list
+                list_type = wihcement_newslist
+            }
+        }
+        wih_career_list {
+            iconIdentifier = content-plugin
+            title = Careers
+            description = Display job listings
+            tt_content_defValues {
+                CType = list
+                list_type = wihcement_careerlist
+            }
+        }
+        wih_dealer_form {
+            iconIdentifier = content-plugin
+            title = Dealer Registration
+            description = Dealer registration form
+            tt_content_defValues {
+                CType = list
+                list_type = wihcement_dealerregistration
+            }
+        }
+        wih_contact_form {
+            iconIdentifier = content-plugin
+            title = Contact Form
+            description = Contact / inquiry form
+            tt_content_defValues {
+                CType = list
+                list_type = wihcement_contactform
+            }
+        }
+    }
+    show = *
+}

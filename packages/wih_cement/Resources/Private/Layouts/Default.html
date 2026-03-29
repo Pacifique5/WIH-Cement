@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<!DOCTYPE html>
+<html lang="{languageMenu.0.twoLetterIsoCode}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <f:be.pageRenderer />
+    <title><f:render section="Title" /></title>
+    <f:asset.css identifier="wih-main" href="EXT:wih_cement/Resources/Public/Css/main.css" />
+</head>
+<body class="wih-cement">
+
+    <f:render partial="Header/Navigation" arguments="{mainMenu: mainMenu, languageMenu: languageMenu}" />
+
+    <main id="main-content">
+        <f:render section="Main" />
+    </main>
+
+    <f:render partial="Footer/Footer" />
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/{settings.whatsappNumber}"
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Chat on WhatsApp">
+        <img src="EXT:wih_cement/Resources/Public/Icons/whatsapp.svg" alt="WhatsApp" width="50" height="50" />
+    </a>
+
+    <f:asset.script identifier="wih-main" src="EXT:wih_cement/Resources/Public/JavaScript/main.js" />
+</body>
+</html>

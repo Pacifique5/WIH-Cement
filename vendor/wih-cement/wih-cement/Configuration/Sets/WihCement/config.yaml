@@ -1,0 +1,4 @@
+name: wih-cement/wih-cement
+label: WIH Cement
+dependencies:
+  - typo3/fluid-styled-content

@@ -1,0 +1,83 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{inquirySent}">
+    <f:then>
+        <div class="alert alert-success" role="alert">
+            <strong>Thank you!</strong> Your inquiry has been received. Our sales team will contact you within 24 hours.
+        </div>
+    </f:then>
+    <f:else>
+        <f:form action="inquiry" method="post" class="inquiry-form needs-validation" novalidate="novalidate">
+            <f:form.hidden name="product" value="{product.uid}" />
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="inquiry-name" class="form-label">Full Name <span aria-hidden="true">*</span></label>
+                    <f:form.textfield id="inquiry-name"
+                                      name="inquiry[fullName]"
+                                      class="form-control"
+                                      required="required"
+                                      placeholder="Your full name"
+                                      additionalAttributes="{autocomplete: 'name'}" />
+                </div>
+                <div class="col-md-6">
+                    <label for="inquiry-company" class="form-label">Company</label>
+                    <f:form.textfield id="inquiry-company"
+                                      name="inquiry[company]"
+                                      class="form-control"
+                                      placeholder="Company name"
+                                      additionalAttributes="{autocomplete: 'organization'}" />
+                </div>
+                <div class="col-md-6">
+                    <label for="inquiry-email" class="form-label">Email <span aria-hidden="true">*</span></label>
+                    <f:form.textfield id="inquiry-email"
+                                      name="inquiry[email]"
+                                      type="email"
+                                      class="form-control"
+                                      required="required"
+                                      placeholder="your@email.com"
+                                      additionalAttributes="{autocomplete: 'email'}" />
+                </div>
+                <div class="col-md-6">
+                    <label for="inquiry-phone" class="form-label">Phone</label>
+                    <f:form.textfield id="inquiry-phone"
+                                      name="inquiry[phone]"
+                                      type="tel"
+                                      class="form-control"
+                                      placeholder="+250 000 000 000"
+                                      additionalAttributes="{autocomplete: 'tel'}" />
+                </div>
+                <div class="col-md-6">
+                    <label for="inquiry-quantity" class="form-label">Quantity Required</label>
+                    <f:form.textfield id="inquiry-quantity"
+                                      name="inquiry[quantity]"
+                                      class="form-control"
+                                      placeholder="e.g. 500 bags / 20 tons" />
+                </div>
+                <div class="col-md-6">
+                    <label for="inquiry-type" class="form-label">Inquiry Type</label>
+                    <f:form.select id="inquiry-type"
+                                   name="inquiry[inquiryType]"
+                                   class="form-select"
+                                   options="{general: 'General Inquiry', bulk: 'Bulk Order', sample: 'Sample Request', technical: 'Technical Support'}" />
+                </div>
+                <div class="col-12">
+                    <label for="inquiry-message" class="form-label">Message</label>
+                    <f:form.textarea id="inquiry-message"
+                                     name="inquiry[message]"
+                                     class="form-control"
+                                     rows="4"
+                                     placeholder="Describe your requirements..." />
+                </div>
+                <div class="col-12">
+                    <!-- reCAPTCHA placeholder -->
+                    <div class="g-recaptcha" data-sitekey="{settings.recaptchaSiteKey}"></div>
+                </div>
+                <div class="col-12">
+                    <f:form.submit value="Send Inquiry" class="btn btn-primary btn-lg" />
+                </div>
+            </div>
+        </f:form>
+    </f:else>
+</f:if>

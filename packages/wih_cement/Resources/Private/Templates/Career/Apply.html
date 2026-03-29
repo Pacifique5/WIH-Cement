@@ -1,0 +1,79 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="application-form-wrap">
+    <div class="job-summary">
+        <h2>Apply for: {job.title}</h2>
+        <p class="job-meta">
+            <span class="badge">{job.department}</span>
+            <span class="badge">{job.jobType}</span>
+            <span>{job.location}</span>
+        </p>
+    </div>
+
+    <f:if condition="{applicationSent}">
+        <f:then>
+            <div class="alert alert-success" role="alert">
+                <strong>Application submitted!</strong> Thank you for applying. Our HR team will review your application and contact you.
+            </div>
+        </f:then>
+        <f:else>
+            <f:form action="apply" method="post" enctype="multipart/form-data" class="application-form needs-validation" novalidate="novalidate">
+                <f:form.hidden name="job" value="{job.uid}" />
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="app-name" class="form-label">Full Name <span aria-hidden="true">*</span></label>
+                        <f:form.textfield id="app-name"
+                                          name="application[fullName]"
+                                          class="form-control"
+                                          required="required"
+                                          additionalAttributes="{autocomplete: 'name'}" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="app-email" class="form-label">Email <span aria-hidden="true">*</span></label>
+                        <f:form.textfield id="app-email"
+                                          name="application[email]"
+                                          type="email"
+                                          class="form-control"
+                                          required="required"
+                                          additionalAttributes="{autocomplete: 'email'}" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="app-phone" class="form-label">Phone</label>
+                        <f:form.textfield id="app-phone"
+                                          name="application[phone]"
+                                          type="tel"
+                                          class="form-control"
+                                          additionalAttributes="{autocomplete: 'tel'}" />
+                    </div>
+                    <div class="col-12">
+                        <label for="app-cover" class="form-label">Cover Letter</label>
+                        <f:form.textarea id="app-cover"
+                                         name="application[coverLetter]"
+                                         class="form-control"
+                                         rows="6"
+                                         placeholder="Tell us why you are the right candidate..." />
+                    </div>
+                    <div class="col-12">
+                        <label for="app-resume" class="form-label">Resume / CV <span aria-hidden="true">*</span></label>
+                        <input type="file"
+                               id="app-resume"
+                               name="application[resume]"
+                               class="form-control"
+                               accept=".pdf,.doc,.docx"
+                               required
+                               aria-describedby="resume-hint" />
+                        <div id="resume-hint" class="form-text">Accepted formats: PDF, DOC, DOCX. Max 5MB.</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="g-recaptcha" data-sitekey="{settings.recaptchaSiteKey}"></div>
+                    </div>
+                    <div class="col-12">
+                        <f:form.submit value="Submit Application" class="btn btn-primary btn-lg" />
+                    </div>
+                </div>
+            </f:form>
+        </f:else>
+    </f:if>
+</div>

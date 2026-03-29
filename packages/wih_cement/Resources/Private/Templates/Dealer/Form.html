@@ -1,0 +1,94 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="dealer-registration-wrap">
+
+    <f:if condition="{registrationSent}">
+        <f:then>
+            <div class="alert alert-success" role="alert">
+                <strong>Application received!</strong> Our sales team will review your dealer application and contact you within 3-5 business days.
+            </div>
+        </f:then>
+        <f:else>
+            <f:form action="register" method="post" class="dealer-form needs-validation" novalidate="novalidate">
+
+                <fieldset>
+                    <legend>Company Information</legend>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="dealer-company" class="form-label">Company Name <span aria-hidden="true">*</span></label>
+                            <f:form.textfield id="dealer-company"
+                                              name="dealer[companyName]"
+                                              class="form-control"
+                                              required="required"
+                                              additionalAttributes="{autocomplete: 'organization'}" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dealer-contact" class="form-label">Contact Person <span aria-hidden="true">*</span></label>
+                            <f:form.textfield id="dealer-contact"
+                                              name="dealer[contactPerson]"
+                                              class="form-control"
+                                              required="required"
+                                              additionalAttributes="{autocomplete: 'name'}" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dealer-email" class="form-label">Email <span aria-hidden="true">*</span></label>
+                            <f:form.textfield id="dealer-email"
+                                              name="dealer[email]"
+                                              type="email"
+                                              class="form-control"
+                                              required="required"
+                                              additionalAttributes="{autocomplete: 'email'}" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dealer-phone" class="form-label">Phone <span aria-hidden="true">*</span></label>
+                            <f:form.textfield id="dealer-phone"
+                                              name="dealer[phone]"
+                                              type="tel"
+                                              class="form-control"
+                                              required="required"
+                                              additionalAttributes="{autocomplete: 'tel'}" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="mt-4">
+                    <legend>Location</legend>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="dealer-country" class="form-label">Country <span aria-hidden="true">*</span></label>
+                            <f:form.textfield id="dealer-country"
+                                              name="dealer[country]"
+                                              class="form-control"
+                                              required="required"
+                                              additionalAttributes="{autocomplete: 'country-name'}" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dealer-region" class="form-label">Region / Province</label>
+                            <f:form.textfield id="dealer-region"
+                                              name="dealer[region]"
+                                              class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label for="dealer-address" class="form-label">Full Address</label>
+                            <f:form.textarea id="dealer-address"
+                                             name="dealer[address]"
+                                             class="form-control"
+                                             rows="3"
+                                             additionalAttributes="{autocomplete: 'street-address'}" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="mt-4">
+                    <div class="g-recaptcha" data-sitekey="{settings.recaptchaSiteKey}"></div>
+                </div>
+                <div class="mt-3">
+                    <f:form.submit value="Submit Dealer Application" class="btn btn-primary btn-lg" />
+                </div>
+
+            </f:form>
+        </f:else>
+    </f:if>
+
+</div>

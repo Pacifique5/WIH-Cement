@@ -1,0 +1,65 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="careers-section">
+
+    <!-- Filter by Department -->
+    <div class="careers-filter" role="search" aria-label="Filter jobs by department">
+        <label for="dept-filter" class="filter-label">Filter by Department:</label>
+        <select id="dept-filter" class="form-select" onchange="filterJobs(this.value)">
+            <option value="all">All Departments</option>
+            <option value="management">Management</option>
+            <option value="sales">Sales & Distribution</option>
+            <option value="marketing">Marketing</option>
+            <option value="operations">Operations</option>
+            <option value="hr">Human Resources</option>
+            <option value="engineering">Engineering</option>
+            <option value="quality">Quality Control</option>
+            <option value="it">IT</option>
+        </select>
+    </div>
+
+    <!-- Job Listings -->
+    <div class="jobs-list" role="list">
+        <f:for each="{jobs}" as="job">
+            <article class="job-card" data-department="{job.department}" role="listitem">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">{job.title}</h3>
+                        <div class="job-meta">
+                            <span class="badge badge-dept">{job.department}</span>
+                            <span class="badge badge-type">{job.jobType}</span>
+                            <f:if condition="{job.isInternship}">
+                                <span class="badge badge-internship">Internship</span>
+                            </f:if>
+                            <span class="job-location">
+                                <img src="EXT:wih_cement/Resources/Public/Icons/location.svg" alt="" width="14" height="14" aria-hidden="true" />
+                                {job.location}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-deadline">
+                        <span>Deadline:</span>
+                        <f:format.date format="d M Y">{job.deadline}</f:format.date>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <f:link.action action="show" arguments="{job: job}" class="btn btn-outline btn-sm">
+                        View Details
+                    </f:link.action>
+                    <f:link.action action="apply" arguments="{job: job}" class="btn btn-primary btn-sm">
+                        Apply Now
+                    </f:link.action>
+                </div>
+            </article>
+        </f:for>
+
+        <f:if condition="{jobs -> f:count()} == 0">
+            <div class="no-jobs-message" role="status">
+                <p>No open positions at the moment. Check back soon or send us your CV at
+                    <a href="mailto:{settings.hrEmail}">{settings.hrEmail}</a>
+                </p>
+            </div>
+        </f:if>
+    </div>
+</div>

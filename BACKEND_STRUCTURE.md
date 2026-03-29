@@ -3,52 +3,49 @@
 ## Page Tree Structure
 
 ```
-WIH Cement (Root)
-├── Home
-├── About Us
-│   ├── Company Overview
-│   ├── Vision & Mission
-│   ├── Leadership Team
-│   ├── Factory & Production Facilities
-│   ├── Corporate Social Responsibility (CSR)
-│   ├── Sustainability & Environmental Commitment
-│   └── Certifications
-├── Products
-│   ├── Ordinary Portland Cement (OPC)
-│   ├── Portland Pozzolana Cement (PPC)
-│   ├── Rapid Hardening Cement
-│   └── Specialized Cement Products
-├── Manufacturing & Quality Control
-├── Distribution Network
-├── Projects & Case Studies
-│   ├── Infrastructure Projects
-│   ├── Commercial Projects
-│   ├── Residential Projects
-│   └── Government Contracts
-├── Sustainability
-├── News & Media
-│   ├── Company News
-│   ├── Press Releases
-│   ├── Events
-│   └── Blog
-├── Careers
-├── Contact Us
-├── Dealer Portal (fe_login protected)
-└── [System]
-    ├── 404 Not Found
-    ├── Storage (sysfolder)
-    │   ├── Products Records
-    │   ├── Projects Records
-    │   ├── News Records
-    │   ├── Jobs Records
-    │   ├── Testimonials Records
-    │   ├── Dealers Records
-    │   └── Inquiries Records
-    └── Languages
-        ├── French
-        ├── Kinyarwanda
-        └── Chinese
+WIH Cement [Root]
+├── Home [Standard]
+├── About Us [Standard]
+│   ├── Company Overview [Standard]
+│   ├── Vision & Mission [Standard]
+│   ├── Leadership Team [Standard]
+│   ├── Factory & Production Facilities [Standard]
+│   ├── Corporate Social Responsibility [Standard]
+│   ├── Sustainability & Environmental Commitment [Standard]
+│   └── Certifications [Standard]
+├── Products [Standard]
+│   ├── Ordinary Portland Cement (OPC) [Standard]
+│   ├── Portland Pozzolana Cement (PPC) [Standard]
+│   ├── Rapid Hardening Cement [Standard]
+│   └── Specialized Cement Products [Standard]
+├── Manufacturing & Quality Control [Standard]
+├── Distribution Network [Standard]
+├── Projects & Case Studies [Standard]
+│   ├── Infrastructure Projects [Standard]
+│   ├── Commercial Projects [Standard]
+│   ├── Residential Projects [Standard]
+│   └── Government Contracts [Standard]
+├── Sustainability [Standard]
+├── News & Media [Standard]
+│   ├── Company News [Standard]
+│   ├── Press Releases [Standard]
+│   ├── Events [Standard]
+│   └── Blog [Standard]
+├── Careers [Standard]
+├── Contact Us [Standard]
+├── Dealer Portal [Standard]
+├── 404 Not Found [Standard] ← hidden in menu
+└── _Storage [Folder]
+    ├── Products Records [Folder]
+    ├── Projects Records [Folder]
+    ├── News Records [Folder]
+    ├── Jobs Records [Folder]
+    ├── Dealers Records [Folder]
+    ├── Inquiries Records [Folder]
+    └── Applications Records [Folder]
 ```
+
+> Status: Page tree created ✓
 
 ---
 

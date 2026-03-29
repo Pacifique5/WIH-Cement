@@ -1,0 +1,11 @@
+# WIH Cement — User TSconfig (applied to all backend users)
+
+# Default user settings
+setup.default {
+    copyLevels = 5
+    recursiveDelete = 0
+    startModule = web_layout
+    titleLen = 50
+    edit_showFieldHelp = icon
+    showHiddenFilesAndFolders = 0
+}

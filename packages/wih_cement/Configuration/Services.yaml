@@ -1,0 +1,32 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  WihCement\WihCement\:
+    resource: '../Classes/*'
+
+  WihCement\WihCement\Controller\ProductController:
+    tags:
+      - name: 'extbase.action.controller'
+
+  WihCement\WihCement\Controller\ProjectController:
+    tags:
+      - name: 'extbase.action.controller'
+
+  WihCement\WihCement\Controller\NewsController:
+    tags:
+      - name: 'extbase.action.controller'
+
+  WihCement\WihCement\Controller\CareerController:
+    tags:
+      - name: 'extbase.action.controller'
+
+  WihCement\WihCement\Controller\DealerController:
+    tags:
+      - name: 'extbase.action.controller'
+
+  WihCement\WihCement\Controller\ContactController:
+    tags:
+      - name: 'extbase.action.controller'
