@@ -1,0 +1,1 @@
+a:3:{s:17:"short_description";s:25:"View system configuration";s:11:"description";s:138:"Allows you to browse the values of the $TCA array (table configuration) and $TYPO3_CONF_VARS. You cannot set any values, only browse them.";s:5:"title";s:13:"Configuration";}

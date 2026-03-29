@@ -59,7 +59,7 @@ languages:
     fallbackType: fallback
     fallbacks: '0'
 rootPageId: 1
-dependencies:
+sets:
   - wih-cement/wih-cement
 routes:
   - route: robots.txt

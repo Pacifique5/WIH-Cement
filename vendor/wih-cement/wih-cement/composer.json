@@ -17,7 +17,10 @@
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "wih_cement"
+            "extension-key": "wih_cement",
+            "site-sets": [
+                "Configuration/Sets/WihCement"
+            ]
         }
     }
 }

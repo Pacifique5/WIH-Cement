@@ -1,4 +1,6 @@
 name: wih-cement/wih-cement
 label: WIH Cement
-dependencies:
+sets:
   - typo3/fluid-styled-content
+  - typo3/seo
+  - typo3/felogin
